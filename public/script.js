@@ -1,4 +1,4 @@
-// Initialize Particles.js
+
 particlesJS('particles-js', {
   particles: {
     number: { value: 80, density: { enable: true, value_area: 800 } },
@@ -175,7 +175,7 @@ hamburger.addEventListener('click', () => {
 // Load testimonials from database
 async function loadTestimonials() {
   try {
-    const response = await fetch('/api/testimonials');
+    const response = await fetch('http://localhost:5001/api/testimonials');
     const testimonials = await response.json();
     const container = document.getElementById('testimonials-container');
 
@@ -235,7 +235,7 @@ document.getElementById('contact-form').addEventListener('submit', async (e) => 
   const message = document.getElementById('message').value;
 
   try {
-    const response = await fetch('/api/contact', {
+    const response = await fetch('http://localhost:5001/api/contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -266,7 +266,7 @@ document.getElementById('inquiry-form').addEventListener('submit', async (e) => 
   const message = document.getElementById('inquiry-message').value;
 
   try {
-    const response = await fetch('/api/contact', {
+    const response = await fetch('http://localhost:5001/api/contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -296,7 +296,7 @@ document.getElementById('insurance-quote-form').addEventListener('submit', async
   const coverageType = e.target.querySelector('select').value;
 
   try {
-    const response = await fetch('/api/contact', {
+    const response = await fetch('http://localhost:5001/api/contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -332,7 +332,7 @@ document.addEventListener('click', (e) => {
     const inquirySection = document.getElementById('inquiry');
     inquirySection.scrollIntoView({ behavior: 'smooth' });
 
-    // Pre-fill the inquiry form
+
     const serviceSelect = document.getElementById('inquiry-service');
     const messageTextarea = document.getElementById('inquiry-message');
 
@@ -345,5 +345,5 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Load testimonials on page load
+
 document.addEventListener('DOMContentLoaded', loadTestimonials);

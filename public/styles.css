@@ -156,10 +156,11 @@ section {
 }
 
 /* About Section */
+/*
 #about {
   background-color: #111111;
 }
-
+*/
 #about h2 {
   text-align: center;
   margin-bottom: 30px;
@@ -173,7 +174,7 @@ section {
   color: #cccccc;
 }
 
-/* Services Section */
+
 #services {
   background-color: #000000;
 }
@@ -204,7 +205,6 @@ section {
   padding: 30px;
   border-radius: 10px;
   text-align: center;
-  transition: all 0.3s ease;
   border: 1px solid #333333;
 }
 
@@ -243,10 +243,11 @@ section {
 }
 
 /* Funeral Cover Section */
+/*
 #funeral-cover {
   background-color: #111111;
 }
-
+*/
 #funeral-cover h2 {
   text-align: center;
   margin-bottom: 30px;
@@ -263,7 +264,6 @@ section {
   padding: 30px;
   border-radius: 10px;
   border: 1px solid #333333;
-  transition: all 0.3s ease;
 }
 
 .cover-card:hover {
@@ -359,7 +359,6 @@ section {
   background-color: #111111;
   border-radius: 10px;
   overflow: hidden;
-  transition: all 0.3s ease;
   border: 1px solid #333333;
 }
 
@@ -427,7 +426,6 @@ section {
   border-radius: 5px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
   font-size: 0.9rem;
 }
 
@@ -451,10 +449,11 @@ section {
 }
 
 /* Plans Section */
+/*
 #plans {
   background-color: #111111;
 }
-
+*/
 #plans h2 {
   text-align: center;
   margin-bottom: 30px;
@@ -471,7 +470,6 @@ section {
   padding: 30px;
   border-radius: 10px;
   border: 1px solid #333333;
-  transition: all 0.3s ease;
 }
 
 .plan-card:hover {
@@ -675,7 +673,6 @@ section {
   border-radius: 5px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
   font-size: 1rem;
 }
 
@@ -698,10 +695,11 @@ section {
 }
 
 /* FAQ Section */
+/*
 #faq {
   background-color: #111111;
 }
-
+*/
 #faq h2 {
   text-align: center;
   margin-bottom: 50px;
@@ -721,7 +719,6 @@ section {
 .faq-item h3 {
   margin-bottom: 15px;
   cursor: pointer;
-  transition: color 0.3s ease;
 }
 
 .faq-item h3:hover {
@@ -789,7 +786,6 @@ section {
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
 #inquiry-form button:hover {
@@ -798,10 +794,11 @@ section {
 }
 
 /* Testimonials Section */
+/*
 #testimonials {
   background-color: #111111;
 }
-
+*/
 #testimonials h2 {
   text-align: center;
   margin-bottom: 50px;
@@ -818,7 +815,6 @@ section {
   padding: 30px;
   border-radius: 10px;
   border-left: 5px solid #d4af37;
-  transition: all 0.3s ease;
 }
 
 .testimonial-card:hover {
@@ -885,7 +881,6 @@ section {
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
 #contact-form button:hover {

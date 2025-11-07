@@ -46,6 +46,14 @@
 - [x] Open in browser to verify (localhost:3000)
 - [x] Test responsiveness, animations, new sections, and inquiry form submission
 
+## Python Backend Setup
+- [x] Create Python virtual environment in backend/
+- [x] Install Flask, SQLAlchemy, Flask-CORS dependencies
+- [x] Create SQLAlchemy models for testimonials and contacts
+- [x] Implement Flask API routes for GET /api/testimonials and POST /api/contact
+- [x] Test database creation and API endpoints (running on port 5001)
+- [x] Connect frontend to Python backend API endpoints
+
 ## Content Expansion for Clarity
 - [x] Expand Services section with more detailed descriptions and additional services
 - [x] Enhance Funeral Cover section with pricing and more benefits
