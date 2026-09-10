@@ -1,0 +1,9 @@
+# Local environment configuration and databases
+.env
+backend/.env
+*.db
+
+# Dependencies and Python build artifacts
+node_modules/
+__pycache__/
+*.py[cod]

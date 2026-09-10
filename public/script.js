@@ -172,11 +172,34 @@ hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('active');
 });
 
+// A hosted API can set window.JBV_API_URL before this script loads. Keep local
+// development working while preventing the live site from calling localhost.
+const API_BASE_URL = window.JBV_API_URL || (
+  ['localhost', '127.0.0.1'].includes(window.location.hostname)
+    ? 'http://localhost:5001'
+    : ''
+);
+
+async function submitContact(payload) {
+  if (!API_BASE_URL) {
+    throw new Error('Contact API is not configured');
+  }
+
+  return fetch(`${API_BASE_URL}/api/contact`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  });
+}
+
 // Load testimonials from database
 async function loadTestimonials() {
   try {
-    const response = await fetch('http://localhost:5001/api/testimonials');
-    const testimonials = await response.json();
+    const testimonials = API_BASE_URL
+      ? await fetch(`${API_BASE_URL}/api/testimonials`).then(response => response.json())
+      : [];
     const container = document.getElementById('testimonials-container');
 
     if (testimonials.length === 0) {
@@ -235,13 +258,7 @@ document.getElementById('contact-form').addEventListener('submit', async (e) => 
   const message = document.getElementById('message').value;
 
   try {
-    const response = await fetch('http://localhost:5001/api/contact', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ name, email, message })
-    });
+    const response = await submitContact({ name, email, message });
 
     if (response.ok) {
       alert('Thank you for your message. We will get back to you soon.');
@@ -251,7 +268,7 @@ document.getElementById('contact-form').addEventListener('submit', async (e) => 
     }
   } catch (error) {
     console.error('Error submitting contact form:', error);
-    alert('There was an error sending your message. Please try again.');
+    alert('The online contact form is not available yet. Please try again later.');
   }
 });
 
@@ -266,13 +283,7 @@ document.getElementById('inquiry-form').addEventListener('submit', async (e) => 
   const message = document.getElementById('inquiry-message').value;
 
   try {
-    const response = await fetch('http://localhost:5001/api/contact', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ name, email, phone, service, message })
-    });
+    const response = await submitContact({ name, email, phone, service, message });
 
     if (response.ok) {
       alert('Thank you for your inquiry. We will get back to you soon.');
@@ -282,7 +293,7 @@ document.getElementById('inquiry-form').addEventListener('submit', async (e) => 
     }
   } catch (error) {
     console.error('Error submitting inquiry form:', error);
-    alert('There was an error sending your inquiry. Please try again.');
+    alert('The online inquiry form is not available yet. Please try again later.');
   }
 });
 
@@ -296,13 +307,7 @@ document.getElementById('insurance-quote-form').addEventListener('submit', async
   const coverageType = e.target.querySelector('select').value;
 
   try {
-    const response = await fetch('http://localhost:5001/api/contact', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ name, email, phone, coverageType, message: 'Insurance quote request' })
-    });
+    const response = await submitContact({ name, email, phone, coverageType, message: 'Insurance quote request' });
 
     if (response.ok) {
       alert('Thank you for your quote request. We will get back to you soon.');
@@ -312,7 +317,7 @@ document.getElementById('insurance-quote-form').addEventListener('submit', async
     }
   } catch (error) {
     console.error('Error submitting insurance quote form:', error);
-    alert('There was an error sending your request. Please try again.');
+    alert('The online quote form is not available yet. Please try again later.');
   }
 });
 
