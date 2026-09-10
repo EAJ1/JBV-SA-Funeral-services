@@ -83,7 +83,7 @@ Before running this project, ensure you have the following installed:
 
 Pushing to `main` deploys the static website in `public/` via the included GitHub Actions workflow. In the GitHub repository, go to **Settings → Pages** and select **GitHub Actions** as the publishing source. The site will be available at `https://eaj1.github.io/JBV-SA-Funeral-services/` after the workflow finishes.
 
-GitHub Pages does not run the Node.js or Flask backend. The published site uses its built-in sample testimonials and keeps form submissions unavailable until a backend is hosted separately. To connect one later, define `window.JBV_API_URL` before `script.js` loads, for example `https://api.example.com`.
+GitHub Pages does not run the Node.js or Flask backend. Until one is hosted separately, form submissions open a pre-filled email to `info@jbvsouthafrica.co.za`, and the testimonials section displays a placeholder rather than fabricated client reviews. To connect a backend later, define `window.JBV_API_URL` before `script.js` loads, for example `https://api.example.com`.
 
 ## 📖 Usage
 
