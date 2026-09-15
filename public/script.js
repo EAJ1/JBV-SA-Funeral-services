@@ -1,154 +1,3 @@
-
-particlesJS('particles-js', {
-  particles: {
-    number: { value: 80, density: { enable: true, value_area: 800 } },
-    color: { value: '#d4af37' },
-    shape: { type: 'circle' },
-    opacity: { value: 0.5, random: true },
-    size: { value: 3, random: true },
-    line_linked: { enable: true, distance: 150, color: '#d4af37', opacity: 0.4, width: 1 },
-    move: { enable: true, speed: 2, direction: 'none', random: true, straight: false, out_mode: 'out' }
-  },
-  interactivity: {
-    detect_on: 'canvas',
-    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' } },
-    modes: { repulse: { distance: 200, duration: 0.4 }, push: { particles_nb: 4 } }
-  },
-  retina_detect: true
-});
-
-// Three.js Scene Setup
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ alpha: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.getElementById('three-js-container').appendChild(renderer.domElement);
-
-// Create floating memorial elements
-const geometry = new THREE.TorusGeometry(1, 0.4, 16, 100);
-const material = new THREE.MeshBasicMaterial({ color: 0xd4af37, wireframe: true });
-const torus = new THREE.Mesh(geometry, material);
-scene.add(torus);
-
-camera.position.z = 5;
-
-// Animation loop
-function animate() {
-  requestAnimationFrame(animate);
-  torus.rotation.x += 0.01;
-  torus.rotation.y += 0.01;
-  renderer.render(scene, camera);
-}
-animate();
-
-// Handle window resize for Three.js
-window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-});
-
-// GSAP Animations
-gsap.registerPlugin(ScrollTrigger);
-
-// Hero animations
-gsap.from('.hero-title', { opacity: 0, y: 50, duration: 1, delay: 0.5 });
-gsap.from('.hero-subtitle', { opacity: 0, y: 50, duration: 1, delay: 1 });
-gsap.from('.cta-button', { opacity: 0, y: 50, duration: 1, delay: 1.5 });
-
-// Section animations
-gsap.utils.toArray('section').forEach(section => {
-  gsap.from(section.querySelector('h2'), {
-    scrollTrigger: {
-      trigger: section,
-      start: 'top 80%',
-      end: 'bottom 20%',
-      toggleActions: 'play none none reverse'
-    },
-    opacity: 0,
-    y: 30,
-    duration: 0.8
-  });
-});
-
-// Service cards animation
-gsap.from('.service-card', {
-  scrollTrigger: {
-    trigger: '#services',
-    start: 'top 80%'
-  },
-  opacity: 0,
-  y: 50,
-  duration: 0.8,
-  stagger: 0.2
-});
-
-// Cover cards animation
-gsap.from('.cover-card', {
-  scrollTrigger: {
-    trigger: '#funeral-cover',
-    start: 'top 80%'
-  },
-  opacity: 0,
-  y: 50,
-  duration: 0.8,
-  stagger: 0.2
-});
-
-// Casket items animation
-gsap.from('.casket-item', {
-  scrollTrigger: {
-    trigger: '#caskets',
-    start: 'top 80%'
-  },
-  opacity: 0,
-  y: 50,
-  duration: 0.8,
-  stagger: 0.2
-});
-
-// Plan cards animation
-gsap.from('.plan-card', {
-  scrollTrigger: {
-    trigger: '#plans',
-    start: 'top 80%'
-  },
-  opacity: 0,
-  y: 50,
-  duration: 0.8,
-  stagger: 0.2
-});
-
-// Insurance content animation
-gsap.from('.insurance-content', {
-  scrollTrigger: {
-    trigger: '#insurance',
-    start: 'top 80%'
-  },
-  opacity: 0,
-  y: 50,
-  duration: 0.8
-});
-
-// FAQ items animation
-gsap.from('.faq-item', {
-  scrollTrigger: {
-    trigger: '#faq',
-    start: 'top 80%'
-  },
-  opacity: 0,
-  y: 30,
-  duration: 0.6,
-  stagger: 0.1
-});
-
-// Parallax effect
-window.addEventListener('scroll', () => {
-  const scrolled = window.pageYOffset;
-  const rate = scrolled * -0.5;
-  document.querySelector('#hero').style.transform = `translateY(${rate}px)`;
-});
-
 // Smooth scrolling for navigation
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
@@ -170,7 +19,25 @@ const navMenu = document.querySelector('.nav-menu');
 hamburger.addEventListener('click', () => {
   navMenu.classList.toggle('active');
   hamburger.classList.toggle('active');
+  const expanded = navMenu.classList.contains('active');
+  hamburger.setAttribute('aria-expanded', String(expanded));
+  hamburger.setAttribute('aria-label', expanded ? 'Close menu' : 'Open menu');
 });
+
+function closeMenu() {
+  navMenu.classList.remove('active');
+  hamburger.classList.remove('active');
+  hamburger.setAttribute('aria-expanded', 'false');
+  hamburger.setAttribute('aria-label', 'Open menu');
+}
+navMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+    closeMenu();
+    hamburger.focus();
+  }
+});
+window.matchMedia('(max-width: 1100px)').addEventListener('change', closeMenu);
 
 // A hosted API can set window.JBV_API_URL before this script loads. Keep local
 // development working while preventing the live site from calling localhost.
@@ -235,17 +102,6 @@ async function loadTestimonials() {
       container.appendChild(card);
     });
 
-    // Animate testimonials
-    gsap.from('.testimonial-card', {
-      scrollTrigger: {
-        trigger: '#testimonials',
-        start: 'top 80%'
-      },
-      opacity: 0,
-      y: 50,
-      duration: 0.8,
-      stagger: 0.2
-    });
   } catch (error) {
     console.error('Error loading testimonials:', error);
   }
