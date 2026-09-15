@@ -984,3 +984,55 @@ footer p {
   transform: translateY(0);
   transition: transform 0.1s linear;
 }
+
+/* Shared SVG drawings keep icon shapes consistent across screen sizes. */
+.service-icon {
+  display: block;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 20px;
+  color: #d4af37;
+}
+.contact-icon { width: 22px; height: 22px; flex-shrink: 0; }
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+.hero-contact-actions { margin-bottom: 0; }
+.contact-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+}
+.contact-button {
+  padding: 14px 24px;
+  border: 1px solid #d4af37;
+  border-radius: 5px;
+  background: #000000;
+  color: #d4af37;
+  font-weight: 500;
+}
+.contact-button:hover { background: #211c0b; }
+.contact-actions a:focus-visible { outline: 2px solid #ffffff; outline-offset: 4px; }
+#contact h2 { margin-bottom: 16px; }
+.contact-intro { max-width: 600px; margin: 0 auto 24px; text-align: center; color: #cccccc; }
+.service-card li::before, .cover-card li::before, .plan-card li::before, .insurance-info li::before {
+  content: '';
+  width: 14px;
+  height: 14px;
+  top: 0.35em;
+  background-color: #d4af37;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m3 8 3 3 7-7' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m3 8 3 3 7-7' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.insurance-type li::before { width: 4px; height: 4px; top: 0.65em; border-radius: 50%; mask: none; -webkit-mask: none; }
+@media (max-width: 768px) {
+  .hero-overlay { padding-left: 20px; padding-right: 20px; }
+  .contact-actions { gap: 12px; }
+  .contact-actions a { padding: 12px 18px; }
+}
