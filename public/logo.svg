@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <title>JBV South Africa</title>
+  <rect x="2" y="2" width="76" height="76" rx="20" fill="#090909" stroke="#d4af37" stroke-width="2"/>
+  <g stroke="#d4af37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Outlined lettering stays identical on every device. -->
+    <path d="M17 29h13m-3 0v21c0 9-12 9-12 1M35 55V29h7c10 0 10 12 0 12h-7m7 0c11 0 11 14 0 14h-7M52 29l8 26 8-26"/>
+    <path d="M30 65h20M35 17h10" stroke-width="1.5"/>
+  </g>
+</svg>
