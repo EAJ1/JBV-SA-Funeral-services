@@ -1059,3 +1059,33 @@ footer p {
   .brand-name { font-size: 1.125rem; }
   .brand-mark { width: 56px; height: 56px; }
 }
+
+/* Native disclosure works even when optional animation scripts fail. */
+.email-options { max-width: 100%; }
+.email-options summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  cursor: pointer;
+  list-style: none;
+}
+.email-options summary::-webkit-details-marker { display: none; }
+.email-options summary::after { content: '+'; margin-left: 8px; }
+.email-options[open] summary::after { content: '−'; }
+.email-options summary:focus-visible { outline: 2px solid #ffffff; outline-offset: 4px; }
+.email-options-panel {
+  margin-top: 12px;
+  padding: 18px;
+  border: 1px solid #d4af37;
+  border-radius: 5px;
+  background: #111111;
+  color: #ffffff;
+  text-align: left;
+  max-width: 320px;
+}
+.email-options-panel p { margin: 0 0 10px; font-size: 0.9rem; }
+.contact-actions .email-options-panel a { display: flex; justify-content: flex-start; padding: 8px 0; text-decoration: underline; }
+.email-options-panel p:last-of-type { margin-top: 12px; }
+.email-address { display: block; overflow-wrap: anywhere; user-select: all; font-size: 0.95rem; }
