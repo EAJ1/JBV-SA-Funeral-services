@@ -236,7 +236,7 @@ section {
 }
 
 .service-card li:before {
-  content: '✓';
+  content: '';
   color: #d4af37;
   position: absolute;
   left: 0;
@@ -301,7 +301,7 @@ section {
 }
 
 .cover-card li:before {
-  content: '✓';
+  content: '';
   color: #d4af37;
   position: absolute;
   left: 0;
@@ -507,7 +507,7 @@ section {
 }
 
 .plan-card li:before {
-  content: '✓';
+  content: '';
   color: #d4af37;
   position: absolute;
   left: 0;
@@ -583,7 +583,7 @@ section {
 }
 
 .insurance-info li:before {
-  content: '★';
+  content: '';
   color: #d4af37;
   position: absolute;
   left: 0;
@@ -627,7 +627,7 @@ section {
 }
 
 .insurance-type li:before {
-  content: '•';
+  content: '';
   color: #d4af37;
   position: absolute;
   left: 0;
@@ -993,7 +993,7 @@ footer p {
   margin: 0 auto 20px;
   color: #d4af37;
 }
-.contact-icon { width: 22px; height: 22px; flex-shrink: 0; }
+.contact-icon { display: block; width: 22px; height: 22px; flex-shrink: 0; }
 .contact-actions {
   display: flex;
   flex-wrap: wrap;
@@ -1072,8 +1072,8 @@ footer p {
   list-style: none;
 }
 .email-options summary::-webkit-details-marker { display: none; }
-.email-options summary::after { content: '+'; margin-left: 8px; }
-.email-options[open] summary::after { content: '−'; }
+.email-toggle-icon { display: block; width: 20px; height: 20px; flex-shrink: 0; margin-left: 8px; }
+.email-options[open] .email-toggle-vertical { display: none; }
 .email-options summary:focus-visible { outline: 2px solid #ffffff; outline-offset: 4px; }
 .email-options-panel {
   margin-top: 12px;
